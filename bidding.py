@@ -108,7 +108,10 @@ def place_bid(driver, url, bid, expiry='3 days'):
 
     ActionChains(driver).send_keys(Keys.RETURN).perform()
 
-    time.sleep(1)
+    time.sleep(2)
+    if len(driver.window_handles)<2:
+        print('Error: metamask sign page did not load')
+        return False
 
     main_page = driver.current_window_handle
 
